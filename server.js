@@ -41,7 +41,7 @@ const emailValidator = function(req, res, next) { // email validator
     }
 }
 
-app.get("/", async function (req, res) {
+app.get("/data", async function (req, res) {
     let data = JSON.parse(await fs.readFile("./db.json", "utf-8"))
     let isPresent = await data['data'].find(element => element['email'] === req.body.email);
     let passwordCompare;
