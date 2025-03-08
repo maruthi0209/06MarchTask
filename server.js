@@ -47,7 +47,7 @@ app.get("/", async function (req, res) {
     let passwordCompare;
     let hasheddata = JSON.parse(await fs.readFile("./passwordhash.json", "utf-8"));
     bcrypt.compare(req.body.password, hasheddata[`${req.body.username}`], function(err, result){
-        console.log(hasheddata[`${req.body.username}`])
+        // console.log(hasheddata[`${req.body.username}`])
         if(err) {
             console.log(err)
         } else {
@@ -70,7 +70,7 @@ app.post("/data", usernameValidator, passwordValidator, emailValidator, async fu
         let data = JSON.parse(await fs.readFile("./db.json", "utf-8"))
         bcrypt.hash(req.body.password, 10, function(err, hash){
             if(err) {
-                console.log(error)
+                console.log(err)
             } else {
                 console.log(hash)
                 let  obj = {};
